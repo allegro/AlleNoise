@@ -1,0 +1,85 @@
+
+[tool.poetry]
+name = "noisy_data_generator"
+version = "0.0.1"
+description = "Noisy Data Generator"
+authors = ["Alicja Rączkowska <alicja.raczkowska@allegro.com>", "Aleksandra Osowska-Kurczab <aleksandra.kurczab@allegro.com>"]
+
+[tool.poetry.dependencies]
+python =  ">=3.7.9,<=3.8.4"
+numpy = "^1.21.0"
+attrs = "^23.1.0"
+fsspec = "2021.11.1"
+gcsfs = "2021.11.1"
+pandas = "1.3.5"
+pyspark = "^3.4.0"
+python-dateutil = "2.8.2"
+PyYAML = "6.0"
+matplotlib = "3.5.2"
+tqdm = "4.64.0"
+
+[tool.poetry.dev-dependencies]
+black = "22.3.0"
+isort = "5.10.1"
+flakeheaven = "0.11.1"
+pytest = "6.2.5"
+dephell = "0.8.3"
+mistune = "0.8.4"
+mypy = "0.931"
+types-all = "1.0.0"
+setuptools = "59.5.0"
+
+[tool.black]
+line-length = 120
+target-version = ['py37']
+exclude = '''
+/(
+  | \.git
+  | \.github
+  | \.mypy_cache
+  | \.pytest_cache
+  | \.venv
+  | \.idea
+  | setup.py
+)/
+| setup.py
+'''
+
+[tool.flakeheaven]
+exclude = ["README.md"]
+# make output nice
+format = "grouped"
+# 80 chars aren't enough in 21 century
+max_line_length = 120
+# show line of source code in output
+show_source = true
+inline-quotes = "double"
+
+[tool.flakeheaven.plugins]
+# enable everything that starts from `flake8-`
+"flake8-*" = ["+*", "-E203", "-W503", "-C416", "-D*", "-S*", "-RST*", "-DAR*", "-Q000", "-C812", "-E800", "-S101", "-C408"]
+
+[tool.isort]
+default_section = "THIRDPARTY"
+known_first_party = "category_classifier"
+py_version = "37"
+line_length = 120
+ensure_newline_before_comments = true
+lines_after_imports = 2
+multi_line_output = 3
+force_grid_wrap = 0
+include_trailing_comma = true
+use_parentheses = true
+skip = [
+    ".git",
+    ".github",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".venv",
+    ".idea",
+    "setup.py"
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
