@@ -81,7 +81,7 @@
       "@type": "cr:FileObject",
       "@id": "full_dataset.csv",
       "name": "full_dataset.csv",
-      "contentUrl": "https://github.com/allegro/AlleNoise/blob/main/allenoise/full_dataset.csv",
+      "contentUrl": "https://raw.githubusercontent.com/allegro/AlleNoise/main/allenoise/full_dataset.csv",
       "encodingFormat": "text/tab-separated-values",
       "sha256": "4ef078f7012dea4c67f211a397458dafc7d57e71ef5728ba77cf6680958ce463"
     },
@@ -89,7 +89,7 @@
       "@type": "cr:FileObject",
       "@id": "category_mapping.csv",
       "name": "category_mapping.csv",
-      "contentUrl": "https://github.com/allegro/AlleNoise/blob/main/allenoise/category_mapping.csv",
+      "contentUrl": "https://raw.githubusercontent.com/allegro/AlleNoise/main/allenoise/category_mapping.csv",
       "encodingFormat": "text/tab-separated-values",
       "sha256": "7f9f1f2e1d051f02609c3f5c6a420631bd90299600c303f7e2c703c7bea5ca0e"
     }
