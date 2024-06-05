@@ -1,0 +1,193 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "AlleNoise",
+  "description": "A large-scale text classification benchmark dataset with real-world label noise. It consists of 502,310 e-commerce product titles from Allegro.com with incorrect and corrected category labels.",
+  "keywords": ["label noise", "real-world noise", "instance-dependent noise", "text classification", "benchmark", "dataset"],
+  "version": "1.0.0",
+  "url": "https://github.com/allegro/AlleNoise",
+  "datePublished": "2024-06-04",
+  "citeAs": "Rączkowska, A., Osowska-Kurczab, A., Szczerbiński, J., Jasinska-Kobus, K., Nazarko, K., AlleNoise - large-scale text classification benchmark dataset with real-world label noise, 2024",
+  "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Alicja Rączkowska"
+    },
+    {
+      "@type": "Person",
+      "name": "Kalina Jasinska-Kobus"
+    },
+    {
+      "@type": "Person",
+      "name": "Aleksandra Osowska-Kurczab"
+    },
+    {
+      "@type": "Person",
+      "name": "Jacek Szczerbiński"
+    },
+    {
+      "@type": "Person",
+      "name": "Klaudia Nazarko"
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "full_dataset.csv",
+      "name": "full_dataset.csv",
+      "contentUrl": "https://github.com/allegro/AlleNoise/blob/main/allenoise/full_dataset.csv",
+      "encodingFormat": "text/tab-separated-values",
+      "sha256": "4ef078f7012dea4c67f211a397458dafc7d57e71ef5728ba77cf6680958ce463"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "category_mapping.csv",
+      "name": "category_mapping.csv",
+      "contentUrl": "https://github.com/allegro/AlleNoise/blob/main/allenoise/category_mapping.csv",
+      "encodingFormat": "text/tab-separated-values",
+      "sha256": "7f9f1f2e1d051f02609c3f5c6a420631bd90299600c303f7e2c703c7bea5ca0e"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "products",
+      "name": "products",
+      "description": "Product names with categories where they were listed (noisy labels) and correct categories (true labels).",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "offer_id",
+          "name": "offer_id",
+          "description": "ID of the offer on Allegro.com where the product was listed.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "full_dataset.csv" },
+            "extract": {
+              "column": "offer_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "text",
+          "name": "text",
+          "description": "Product name (in English)",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "full_dataset.csv" },
+            "extract": {
+              "column": "text"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "clean_category_id",
+          "name": "clean_category_id",
+          "description": "True category label (verified by domain experts)",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": { "@id": "full_dataset.csv" },
+            "extract": {
+              "column": "clean_category_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "noisy_category_id",
+          "name": "noisy_category_id",
+          "description": "Noisy category label where the product was initially listed",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": { "@id": "full_dataset.csv" },
+            "extract": {
+              "column": "noisy_category_id"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "categories",
+      "name": "categories",
+      "description": "Category labels and their corresponding paths in the hierarchical taxonomy of assortment categories on Allegro.com",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "category_label",
+          "name": "category_label",
+          "description": "Category label used in full_dataset.csv",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": { "@id": "category_mapping.csv" },
+            "extract": {
+              "column": "category_label"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "category_name",
+          "name": "category_name",
+          "description": "Category path in the hierarchical taxonomy",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "category_mapping.csv" },
+            "extract": {
+              "column": "category_name"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
