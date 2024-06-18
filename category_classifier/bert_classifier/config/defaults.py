@@ -35,7 +35,6 @@ class BertTrainingDefaults:
 
 
 class BertEvaluationDefaults:
-    MC_DROPOUT_TRIALS = 10
     TEST_STAGE_NAME = "test"
     PREDICTIONS_FILE_NAME = "predictions.json"
 

@@ -45,16 +45,7 @@ class AbstractModel(pl.LightningModule, ABC):
     def test_step(self, batch: Batch, batch_index: int) -> T.Dict[str, torch.Tensor]:
         tokens_ids = batch[self.hparams.features_field_name]
         label = batch[self.hparams.label_field_name]
-
-        if self.hparams.use_mc_dropout:
-            # Lightning disables gradients, puts model in eval mode, and does everything needed for validation.
-            # Therefore for MC dropout we need to explicitly put the model in train mode, while for standard
-            # prediction the model is already in the right mode.
-            probabilities = compute_dropout_entropy_measure(
-                tokens_ids, self._encoder, self._softmax_fn, self.hparams.mc_dropout_trials
-            )
-        else:
-            probabilities = self._softmax_fn(self._encoder(tokens_ids))
+        probabilities = self._softmax_fn(self._encoder(tokens_ids))
 
         return {"probabilities": probabilities.cpu().detach(), "target": label.cpu().detach()}
 
