@@ -18,8 +18,6 @@ class CoTeachingBertClassifierParams:
     num_labels: int = 0
     features_field_name: str = ""
     label_field_name: str = ""
-    use_mc_dropout: T.Optional[bool] = None
-    mc_dropout_trials: T.Optional[int] = None
     learning_rate: float = 2e-5
     warmup_steps: int = 100
     weight_decay: float = 0.0

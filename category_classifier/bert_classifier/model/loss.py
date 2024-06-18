@@ -65,7 +65,7 @@ class ClippedCrossEntropyLoss(LossFunction, torch.nn.CrossEntropyLoss):
         reduction: LossReduction = LossReduction.MEAN,
         start_from_epoch: int = 0,
     ):
-        torch.nn.CrossEntropyLoss.__init__(self, ignore_index=ignore_index)
+        torch.nn.CrossEntropyLoss.__init__(self, ignore_index=ignore_index, reduction="none")
         self.clip_at_value = clip_at_value
         self.loss_reduction = reduction
         self.start_from_epoch = start_from_epoch
