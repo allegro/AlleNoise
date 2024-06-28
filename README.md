@@ -21,7 +21,7 @@ Our category classification code that was used for all experiments. It includes 
 How to use:
 * install the dependencies with Poetry:
 ```
-cd category_classifier; poetry install
+cd category_classifier; poetry install --no-root
 ```
 * split **AlleNoise** in a cross-validation scheme:
 ```
@@ -32,7 +32,7 @@ where `FOLDS` is the number of cross-validation folds.
 The result of this script is a folder named `allenoise_cv`, which contains 2 directories: `clean` and `noisy`. The former contains cross-validation splits with clean training data, while the latter stores splits with real-world noise applied to training and validation data.
 * start baseline training with default hyperparameter values:
 ```
-python bert_classifier/train.py \
+python -m bert_classifier.train \
       --job-dir JOB_DIR \
       --model-path MODEL_PATH \
       --tokenizer-path TOKENIZER_PATH \

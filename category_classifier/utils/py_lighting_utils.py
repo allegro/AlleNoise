@@ -14,10 +14,9 @@ from pytorch_lightning.utilities import rank_zero_only
 from torch import Tensor
 from torch.utils.tensorboard import SummaryWriter
 
-from pcs_category_classifier.abstract_classifier.model import AbstractModel
-from pcs_category_classifier.bert_classifier.config.constants import BertTrainingConstants
-from pcs_category_classifier.utils import io_utils as io
-from pcs_category_classifier.utils.fine_utils import fine_dataset_split
+from abstract_classifier.model import AbstractModel
+from bert_classifier.config.constants import BertTrainingConstants
+from utils import io_utils as io
 
 
 def get_grouped_parameters_with_weight_decay(

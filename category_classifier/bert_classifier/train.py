@@ -5,23 +5,22 @@ from dataclasses import asdict
 
 from pytorch_lightning import seed_everything
 
-from pcs_category_classifier.bert_classifier.config import callbacks, infrastructure
-from pcs_category_classifier.bert_classifier.config.constants import FineConstants
-from pcs_category_classifier.bert_classifier.config.defaults import TrainerLoggingConfig
-from pcs_category_classifier.bert_classifier.data.dataset import BertDataModule
-from pcs_category_classifier.bert_classifier.data.utils import (
+from bert_classifier.config import callbacks, infrastructure
+from bert_classifier.config.defaults import TrainerLoggingConfig
+from bert_classifier.data.dataset import BertDataModule, AnchorTrainingProjectSettings
+from bert_classifier.data.utils import (
     check_data_consistency_and_determine_num_labels_and_num_examples,
     determine_num_steps_per_epoch,
 )
-from pcs_category_classifier.bert_classifier.model.co_teaching_model import (
+from bert_classifier.model.co_teaching_model import (
     CoTeachingBertClassifier,
     CoTeachingBertClassifierParams,
 )
-from pcs_category_classifier.bert_classifier.model.model import BertClassifier
-from pcs_category_classifier.bert_classifier.project_setting import AnchorTrainingProjectSettings, ProjectSettings
-from pcs_category_classifier.bert_classifier.trainer.trainer import Trainer
-from pcs_category_classifier.utils import py_lighting_utils
-from pcs_category_classifier.utils.py_lighting_utils import look_for_checkpoints_in_job_dir
+from bert_classifier.model.model import BertClassifier
+from bert_classifier.project_setting import ProjectSettings
+from bert_classifier.trainer.trainer import Trainer
+from utils import py_lighting_utils
+from utils.py_lighting_utils import look_for_checkpoints_in_job_dir
 
 
 warnings.filterwarnings("ignore", message="This overload of add_ is deprecated", category=UserWarning)

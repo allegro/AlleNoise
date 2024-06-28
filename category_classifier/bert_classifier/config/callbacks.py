@@ -3,7 +3,7 @@ from logging import Logger
 
 import pytorch_lightning as pl
 
-import pcs_category_classifier.utils.py_lighting_utils as pl_utils
+import utils.py_lighting_utils as pl_utils
 
 
 def setup_learning_rate_logger_callback() -> pl.callbacks.Callback:
@@ -30,15 +30,9 @@ def setup_callbacks(
     logger: Logger,
     checkpoint_save_frequency: float,
     num_epochs: int,
-    fine_enabled: bool,
-    fine_threshold: float,
-    fine_normalize: bool,
-    fine_batch_size: int,
 ) -> T.List[pl.callbacks.Callback]:
     callbacks = [
         setup_learning_rate_logger_callback(),
         setup_checkpoint_trainer_callback(checkpoint_save_frequency, num_epochs, job_dir, logger),
     ]
-    if fine_enabled:
-        callbacks.append(setup_fine_selector_callback(fine_threshold, fine_normalize, fine_batch_size))
     return callbacks

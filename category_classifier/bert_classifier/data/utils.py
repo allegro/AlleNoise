@@ -6,9 +6,9 @@ import typing as T
 
 import pandas as pd
 
-from pcs_category_classifier.bert_classifier.config.constants import DataPartitioningConstants, GlobalConstants
-from pcs_category_classifier.bert_classifier.project_setting import ProjectSettings
-from pcs_category_classifier.utils import io_utils
+from bert_classifier.config.constants import DataPartitioningConstants, GlobalConstants
+from bert_classifier.project_setting import ProjectSettings
+from utils import io_utils
 
 
 logger = logging.getLogger(__name__)
