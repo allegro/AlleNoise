@@ -10,12 +10,12 @@ import torch.nn.functional as F
 from torch.optim import Optimizer
 from transformers import AdamW, get_linear_schedule_with_warmup
 
-from pcs_category_classifier.abstract_classifier.model import AbstractModel, Batch
-from pcs_category_classifier.bert_classifier.config.constants import BertTrainingConstants, TokenizerConstants
-from pcs_category_classifier.bert_classifier.config.defaults import BertTrainingDefaults
-from pcs_category_classifier.bert_classifier.model.augmenter import Augmenter, _augmentation_definition_parser
-from pcs_category_classifier.bert_classifier.model.encoder import BertEncoder
-from pcs_category_classifier.bert_classifier.model.loss import (
+from abstract_classifier.model import AbstractModel, Batch
+from bert_classifier.config.constants import BertTrainingConstants, TokenizerConstants
+from bert_classifier.config.defaults import BertTrainingDefaults
+from bert_classifier.model.augmenter import Augmenter, _augmentation_definition_parser
+from bert_classifier.model.encoder import BertEncoder
+from bert_classifier.model.loss import (
     ClippedCrossEntropyLoss,
     CrossEntropyLoss,
     ElrCrossEntropyLoss,
@@ -25,11 +25,11 @@ from pcs_category_classifier.bert_classifier.model.loss import (
     PrlLCrossEntropyLoss,
     SplCrossEntropyLoss,
 )
-from pcs_category_classifier.bert_classifier.model.loss_helpers import DropInstancesWithTopValues
-from pcs_category_classifier.bert_classifier.model.mixup import add_mixup_samples
-from pcs_category_classifier.bert_classifier.project_setting import ProjectSettings
-from pcs_category_classifier.utils.io_utils import detect_device
-from pcs_category_classifier.utils.py_lighting_utils import get_grouped_parameters_with_weight_decay
+from bert_classifier.model.loss_helpers import DropInstancesWithTopValues
+from bert_classifier.model.mixup import add_mixup_samples
+from bert_classifier.project_setting import ProjectSettings
+from utils.io_utils import detect_device
+from utils.py_lighting_utils import get_grouped_parameters_with_weight_decay
 
 
 logger = logging.getLogger(__name__)

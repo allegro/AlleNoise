@@ -3,7 +3,7 @@
 name = "category_classifier"
 version = "0.0.1"
 description = "Category Classifier"
-readme = "README.md"
+readme = "../README.md"
 authors = ["Alicja Rączkowska <alicja.raczkowska@allegro.com>", "Aleksandra Osowska-Kurczab <aleksandra.kurczab@allegro.com>", "Jacek Szczerbiński <jacek.szczerbinski@allegro.com>", "Kalina Jasinska-Kobus <kalina.kobus@allegro.com>", "Klaudia Nazarko <klaudia.nazarko@allegro.com>"]
 
 

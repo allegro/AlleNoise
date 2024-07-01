@@ -10,11 +10,11 @@ import pandas as pd
 import torch
 from torch.utils.data.dataset import Dataset
 
-from pcs_category_classifier.abstract_classifier.dataset import AbstractDataModule
-from pcs_category_classifier.bert_classifier.config.constants import AnchorBertDatasetConstants, GlobalConstants
-from pcs_category_classifier.bert_classifier.config.defaults import BertTrainingDefaults
-from pcs_category_classifier.bert_classifier.project_setting import ProjectSettings
-from pcs_category_classifier.utils import data_utils, io_utils, tokenization_utils
+from abstract_classifier.dataset import AbstractDataModule
+from bert_classifier.config.constants import AnchorBertDatasetConstants, AnchorBertPredictorConstants, GlobalConstants
+from bert_classifier.config.defaults import BertTrainingDefaults
+from bert_classifier.project_setting import ProjectSettings, AnchorTrainingEntity
+from utils import data_utils, io_utils, tokenization_utils
 
 
 logger = logging.getLogger(__name__)
@@ -49,6 +49,26 @@ class AnchorDataset(BertDataset):
             AnchorBertDatasetConstants.TRUE_LABEL_FIELD_NAME: true_label,
             AnchorBertDatasetConstants.INDEX_FIELD_NAME: idx,
         }
+
+
+class AnchorTrainingProjectSettings(ProjectSettings):
+    entity = AnchorTrainingEntity
+    dataset = AnchorDataset
+    category_column_name = AnchorBertDatasetConstants.CATEGORY_ID_COL_NAME
+    expected_columns = sorted(
+        [
+            AnchorBertDatasetConstants.OFFER_ID_COL_NAME,
+            AnchorBertDatasetConstants.TEXT_COL_NAME,
+            AnchorBertDatasetConstants.CATEGORY_ID_COL_NAME,
+            AnchorBertDatasetConstants.TRUE_CATEGORY_ID_COL_NAME,
+        ]
+    )
+    features_field_name = AnchorBertDatasetConstants.FEATURES_FIELD_NAME
+    label_field_name = AnchorBertDatasetConstants.LABEL_FIELD_NAME
+    true_label_field_name = AnchorBertDatasetConstants.TRUE_LABEL_FIELD_NAME
+    index_field_name = AnchorBertDatasetConstants.INDEX_FIELD_NAME
+    predictions_output_file_name = AnchorBertPredictorConstants.PREDICTIONS_OUTPUT_FILE_NAME
+    predictions_file_header = AnchorBertPredictorConstants.PREDICTIONS_FILE_HEADER
 
     @property
     def token_ids(self) -> T.List[torch.Tensor]:

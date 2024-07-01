@@ -7,14 +7,14 @@ from typing import Any, Dict, Iterable, List
 
 from transformers import PreTrainedTokenizerFast
 
-from pcs_category_classifier.bert_classifier.config.constants import (
+from bert_classifier.config.constants import (
     DataPartitioningConstants,
     GlobalConstants,
     TokenizerConstants,
 )
-from pcs_category_classifier.bert_classifier.data.entities import CategoryClassificationEntity
-from pcs_category_classifier.bert_classifier.data.utils import list_tokenized_data_chunks
-from pcs_category_classifier.utils import data_utils, io_utils
+from bert_classifier.data.entities import CategoryClassificationEntity
+from bert_classifier.data.utils import list_tokenized_data_chunks
+from utils import data_utils, io_utils
 
 
 logger = logging.getLogger(__name__)

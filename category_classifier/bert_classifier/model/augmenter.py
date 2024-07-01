@@ -7,7 +7,7 @@ from typing import List, Tuple, TypeVar
 import numpy as np
 import torch
 
-from pcs_category_classifier.bert_classifier.config.constants import TokenizerConstants
+from bert_classifier.config.constants import TokenizerConstants
 
 
 AugmenterType = TypeVar("C", bound="Transformation")

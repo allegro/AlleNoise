@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 
-from pcs_category_classifier.bert_classifier.domain_model.co_teaching import (
+from bert_classifier.domain_model.co_teaching import (
     CoTeachingPlusUpdateStrategy,
     CoTeachingVariant,
 )
-from pcs_category_classifier.bert_classifier.model.loss import Losses
+from bert_classifier.model.loss import Losses
 
 
 class BertTrainingDefaults:

@@ -7,8 +7,8 @@ import torch
 from torch.utils.data.dataloader import DataLoader
 from torch.utils.data.dataset import Dataset
 
-from pcs_category_classifier.bert_classifier.config.defaults import BertTrainingDefaults
-from pcs_category_classifier.utils.data_utils import seed_worker
+from bert_classifier.config.defaults import BertTrainingDefaults
+from utils.data_utils import seed_worker
 
 
 class AbstractDataModule(pl.LightningDataModule, ABC):

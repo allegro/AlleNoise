@@ -2,12 +2,11 @@ import typing as T
 
 from attr import attrib, attrs
 
-from pcs_category_classifier.bert_classifier.config.constants import AnchorBertDatasetConstants, AnchorBertPredictorConstants, AnchorBertTokenizerConstants
+from bert_classifier.config.constants import AnchorBertDatasetConstants, AnchorBertTokenizerConstants
 from torch.utils.data.dataset import Dataset
 from transformers import PreTrainedTokenizerFast
 
-from pcs_category_classifier.bert_classifier.data.dataset import AnchorDataset, BertDataset
-from pcs_category_classifier.bert_classifier.data.entities import CategoryClassificationEntity
+from bert_classifier.data.entities import CategoryClassificationEntity
 
 
 class ProjectSettings:
@@ -84,23 +83,3 @@ class AnchorTrainingEntity(CategoryClassificationEntity, AnchorEntityTransformat
     @staticmethod
     def _entity_is_in_training_format(csv_entity: T.Iterable["CategoryClassificationEntity"]) -> bool:
         return True
-
-
-class AnchorTrainingProjectSettings(ProjectSettings):
-    entity = AnchorTrainingEntity
-    dataset = AnchorDataset
-    category_column_name = AnchorBertDatasetConstants.CATEGORY_ID_COL_NAME
-    expected_columns = sorted(
-        [
-            AnchorBertDatasetConstants.OFFER_ID_COL_NAME,
-            AnchorBertDatasetConstants.TEXT_COL_NAME,
-            AnchorBertDatasetConstants.CATEGORY_ID_COL_NAME,
-            AnchorBertDatasetConstants.TRUE_CATEGORY_ID_COL_NAME,
-        ]
-    )
-    features_field_name = AnchorBertDatasetConstants.FEATURES_FIELD_NAME
-    label_field_name = AnchorBertDatasetConstants.LABEL_FIELD_NAME
-    true_label_field_name = AnchorBertDatasetConstants.TRUE_LABEL_FIELD_NAME
-    index_field_name = AnchorBertDatasetConstants.INDEX_FIELD_NAME
-    predictions_output_file_name = AnchorBertPredictorConstants.PREDICTIONS_OUTPUT_FILE_NAME
-    predictions_file_header = AnchorBertPredictorConstants.PREDICTIONS_FILE_HEADER

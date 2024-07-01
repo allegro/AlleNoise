@@ -4,10 +4,10 @@ from pathlib import Path
 import torch
 from transformers import AutoConfig, AutoModel
 
-from pcs_category_classifier.abstract_classifier.encoder import AbstractEncoder
-from pcs_category_classifier.bert_classifier.config.constants import TokenizerConstants
-from pcs_category_classifier.bert_classifier.config.defaults import BertEncoderDefaults
-from pcs_category_classifier.utils.io_utils import list_filepaths, save_json, translate_gcs_path_to_local
+from abstract_classifier.encoder import AbstractEncoder
+from bert_classifier.config.constants import TokenizerConstants
+from bert_classifier.config.defaults import BertEncoderDefaults
+from utils.io_utils import list_filepaths, save_json, translate_gcs_path_to_local
 
 
 logger = logging.getLogger(__name__)

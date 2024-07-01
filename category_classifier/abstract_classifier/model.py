@@ -9,10 +9,10 @@ import pytorch_lightning as pl
 import sklearn.metrics as sk_metrics
 import torch
 
-from pcs_category_classifier.bert_classifier.config.constants import BertTrainingConstants
-from pcs_category_classifier.bert_classifier.config.defaults import BertEvaluationDefaults
-from pcs_category_classifier.bert_classifier.config.metrics import BaseMetrics, LFNDMetrics
-from pcs_category_classifier.utils.io_utils import save_json
+from bert_classifier.config.constants import BertTrainingConstants
+from bert_classifier.config.defaults import BertEvaluationDefaults
+from bert_classifier.config.metrics import BaseMetrics, LFNDMetrics
+from utils.io_utils import save_json
 
 
 logger = logging.getLogger(__name__)

@@ -2,7 +2,7 @@ import typing as T
 
 import torch
 
-from pcs_category_classifier.utils.io_utils import is_cuda_available
+from utils.io_utils import is_cuda_available
 
 
 class AmpConfig:

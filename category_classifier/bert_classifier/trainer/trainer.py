@@ -3,9 +3,9 @@ import argparse
 import pytorch_lightning as pl
 from pytorch_lightning.utilities import rank_zero_warn
 
-from pcs_category_classifier.bert_classifier.config.defaults import BertTrainingDefaults
-from pcs_category_classifier.bert_classifier.project_setting import ProjectSettings
-from pcs_category_classifier.utils import io_utils as io
+from bert_classifier.config.defaults import BertTrainingDefaults
+from bert_classifier.project_setting import ProjectSettings
+from utils import io_utils as io
 
 
 class Trainer(pl.Trainer):

@@ -13,16 +13,16 @@ from torch.optim import AdamW, Optimizer
 from torch.optim.lr_scheduler import LambdaLR
 from transformers import get_linear_schedule_with_warmup
 
-from pcs_category_classifier.abstract_classifier.model import AbstractModel, Batch
-from pcs_category_classifier.bert_classifier.config.defaults import BertTrainingDefaults
-from pcs_category_classifier.bert_classifier.domain_model.co_teaching import (
+from abstract_classifier.model import AbstractModel, Batch
+from bert_classifier.config.defaults import BertTrainingDefaults
+from bert_classifier.domain_model.co_teaching import (
     CoTeachingBertClassifierParams,
     CoTeachingPlusUpdateStrategy,
     CoTeachingVariant,
 )
-from pcs_category_classifier.bert_classifier.model.encoder import BertEncoder
-from pcs_category_classifier.bert_classifier.model.loss import CrossEntropyLoss, Losses, LossReduction
-from pcs_category_classifier.utils.io_utils import detect_device
+from bert_classifier.model.encoder import BertEncoder
+from bert_classifier.model.loss import CrossEntropyLoss, Losses, LossReduction
+from utils.io_utils import detect_device
 
 
 logger = logging.getLogger(__name__)

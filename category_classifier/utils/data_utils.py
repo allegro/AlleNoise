@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 import torch
 
-from pcs_category_classifier.utils.utils_constants import GlobalUtilsConstants
+from utils.utils_constants import GlobalUtilsConstants
 
 
 CsvChunk = T.List[T.Dict[str, str]]

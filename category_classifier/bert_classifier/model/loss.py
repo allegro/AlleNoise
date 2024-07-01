@@ -6,11 +6,11 @@ from typing import Tuple
 import torch
 import torch.nn.functional as F
 
-from pcs_category_classifier.bert_classifier.model.loss_helpers import (
+from bert_classifier.model.loss_helpers import (
     DropInstancesWithTopValues,
     LossUsingCrossEntropyGradientNorm,
 )
-from pcs_category_classifier.utils.io_utils import detect_device
+from utils.io_utils import detect_device
 
 
 class Losses:
