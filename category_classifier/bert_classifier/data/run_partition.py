@@ -7,10 +7,10 @@ from uuid import UUID
 
 import pandas as pd
 
-from pcs_category_classifier.bert_classifier.config.constants import GlobalConstants
-from pcs_category_classifier.bert_classifier.project_setting import ProjectSettings
-from pcs_category_classifier.utils import data_utils, io_utils, tokenization_utils
-from pcs_category_classifier.utils.logging_utils import configure_logging_for_gcp_training
+from bert_classifier.config.constants import GlobalConstants
+from bert_classifier.project_setting import ProjectSettings
+from utils import data_utils, io_utils, tokenization_utils
+from utils.logging_utils import configure_logging_for_gcp_training
 
 
 logger = logging.getLogger(__name__)

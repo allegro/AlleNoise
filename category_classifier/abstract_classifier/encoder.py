@@ -3,8 +3,8 @@ from abc import ABC, abstractmethod
 
 import torch
 
-import pcs_category_classifier.utils.io_utils as io_utils
-from pcs_category_classifier.bert_classifier.config.defaults import BertEncoderDefaults
+import utils.io_utils as io_utils
+from bert_classifier.config.defaults import BertEncoderDefaults
 
 
 class AbstractEncoder(torch.nn.Module, ABC):
