@@ -1,0 +1,15 @@
+python -m category_classifier.bert_classifier.train \
+      --job-dir ../tmp/jobs/training1 \
+      --model-path ../tmp/models/xlm-roberta-base \
+      --tokenizer-path ../tmp/models/xlm-roberta-base \
+      --checkpoint-save-frequency-fraction 1 \
+      --train-file-path ../allenoise_cv/clean/cv/0/train \
+      --val-file-path ../allenoise_cv/clean/cv/0/val \
+      --test-file-path ../allenoise_cv/clean/cv/0/test \
+      --seed 42 \
+      --num-epochs 10 \
+      --validation-sample-size 1 \
+      --batch-size 256 \
+      --learning-rate 0.0001 \
+      --loss cross-entropy \
+      --lfnd-logging-enabled
