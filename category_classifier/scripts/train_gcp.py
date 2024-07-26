@@ -5,7 +5,7 @@ import google.cloud.aiplatform as aip
 
 task = "lfnd-99"
 ts = datetime.now().strftime("%m%d-%H%M%S")
-job_display_name = f"{task}-{ts}-allenoise-check"
+job_display_name = f"{task}-{ts}-allenoise-prod15-baseline"
 job_dir = f"gs://kraken-anchor/jobs/{task}/{job_display_name}"
 
 job_args = [
@@ -29,10 +29,8 @@ gpu_count = 1
 worker_pool_specs = [
     {
         "machine_spec": {
-            "machine_type": f"a2-highgpu-{gpu_count}g",
-            "accelerator_type": "NVIDIA_TESLA_A100",
-            # "machine_type": f"n1-highmem-8",
-            # "accelerator_type": "NVIDIA_TESLA_V100",
+            "machine_type": f"a2-ultragpu-{gpu_count}g",
+            "accelerator_type": "NVIDIA_A100_80GB",
             "accelerator_count": gpu_count,
         },
         "replica_count": 1,

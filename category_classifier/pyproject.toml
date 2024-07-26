@@ -25,6 +25,7 @@ mlflow = "1.30.0"
 tensorboard = "^2.11.0"
 protobuf = ">=3.12.0"
 sacremoses = "0.0.53"
+google-cloud-aiplatform = "1.47.0"
 
 
 [tool.poetry.dev-dependencies]
