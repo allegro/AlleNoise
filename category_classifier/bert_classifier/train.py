@@ -25,6 +25,7 @@ from utils.py_lighting_utils import look_for_checkpoints_in_job_dir
 
 warnings.filterwarnings("ignore", message="This overload of add_ is deprecated", category=UserWarning)
 
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 

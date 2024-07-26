@@ -157,6 +157,7 @@ class BertClassifier(AbstractModel):
             metrics.update({"elr-ce-term": cross_entropy_term, "elr-regularization": elr_regularization})
 
         metrics.update({"loss": loss, "epoch": self.current_epoch})
+        logger.info(f"Step: {self.global_step}  Loss: {loss}")
 
         metrics["probabilities"] = probabilities
 
