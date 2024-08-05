@@ -66,6 +66,10 @@ def save_folds(df, dir_name, fold_count: int, is_clean: bool):
         fold_valid_df["offer_id"] = fold_valid_df.apply(lambda row: str(int(row.offer_id)), axis=1)
         fold_test_df["offer_id"] = fold_test_df.apply(lambda row: str(int(row.offer_id)), axis=1)
 
+        for outdir in [fold_paths.train, fold_paths.val, fold_paths.test]:
+            if not os.path.exists(outdir):
+                os.makedirs(outdir)
+
         fold_train_df.to_csv(os.path.join(fold_paths.train, "offers.csv"), sep="\t", index=False)
         fold_valid_df.to_csv(os.path.join(fold_paths.val, "offers.csv"), sep="\t", index=False)
         fold_test_df.to_csv(os.path.join(fold_paths.test, "offers.csv"), sep="\t", index=False)
@@ -79,18 +83,18 @@ if __name__ == "__main__":
     full_dataset = pd.read_csv(FULL_DATASET_PATH, sep="\t").rename(columns={"clean_category_id": "category_id_true"})
 
     if not os.path.exists(f"{DATASET_DIRECTORY}/clean/cv"):
-        full_dataset["category_id"] = full_dataset["clean_category_id"]
+        full_dataset["category_id"] = full_dataset["category_id_true"]
         save_folds(
-            df=full_dataset, 
-            dir_name=f"{DATASET_DIRECTORY}/clean/cv", 
-            fold_count=args.fold_count, 
+            df=full_dataset,
+            dir_name=f"{DATASET_DIRECTORY}/clean/cv",
+            fold_count=args.fold_count,
             is_clean=True
         )
 
     if not os.path.exists(f"{DATASET_DIRECTORY}/noisy/15/cv"):
         full_dataset["category_id"] = full_dataset["noisy_category_id"]
         save_folds(
-            df=full_dataset, 
-            dir_name=f"{DATASET_DIRECTORY}/noisy/15/cv", 
+            df=full_dataset,
+            dir_name=f"{DATASET_DIRECTORY}/noisy/15/cv",
             fold_count=args.fold_count, is_clean=False
         )
