@@ -1,12 +1,8 @@
+import json
 import typing as T
-from collections import OrderedDict
 from io import TextIOWrapper
 
 import fsspec
-from pyspark.sql import Row
-from pyspark.sql.dataframe import DataFrame
-
-from infrastructure.spark_utils import SparkSession
 
 
 def choose_file_system(path: str) -> fsspec.AbstractFileSystem:
@@ -51,26 +47,6 @@ def list_filepaths(
         return file_paths
 
 
-def save_dict_to_json(args: T.Dict[str, str], spark: SparkSession, output_dir: str) -> None:
-    non_empty_items = {k: v for k, v in args.items() if v is not None}
-    row = Row(**OrderedDict(non_empty_items))
-
-    df = spark.createDataFrame([row])
-    (df.coalesce(1).write.format("json").mode("overwrite").save(output_dir))
-
-
-def save_spark_df_to_csv(df: DataFrame, file_path: str) -> None:
-    (
-        df.repartition(1).write.csv(
-            file_path,
-            compression="none",
-            header=True,
-            mode="overwrite",
-            sep="\t",
-        )
-    )
-
-
-def load_spark_df_from_csv(spark: SparkSession, csv_dir: str) -> DataFrame:
-    assert isdir(csv_dir)
-    return spark.read.csv(csv_dir, sep="\t", header=True)
+def load_json(path: str) -> T.Dict:
+    with open_file(path, "r") as f:
+        return json.load(f)

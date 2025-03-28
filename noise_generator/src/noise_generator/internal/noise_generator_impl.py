@@ -3,7 +3,7 @@ from typing import List
 
 from noise_generator.data_model import DataPoint, NoiseType, PerturbedDataPoint
 from noise_generator.internal.symmetric.symmetric_noise_generator import SymmetricNoiseGenerator
-from noise_generator.noise_generator.class_dependent_noise import ClassDependentNoiseGenerator
+from noise_generator.src.noise_generator.class_dependent_noise import ClassDependentNoiseGenerator
 from noise_generator.noise_generator_facade import NoiseGeneratorFacade
 
 

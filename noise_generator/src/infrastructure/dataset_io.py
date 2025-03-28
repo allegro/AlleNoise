@@ -1,4 +1,5 @@
 import logging
+import os
 from typing import List, Tuple
 
 import pandas as pd
@@ -33,5 +34,10 @@ def save_perturbed_dataset(perturbed_dataset: List[PerturbedDataPoint], output_p
     )
 
     logger.info(f"Saving the dataframe to file {output_path}...")
+
+    output_dir = os.path.dirname(output_path)
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
     df.to_csv(output_path, sep="\t", escapechar="\\", index=False)
     logger.info("Done.")
